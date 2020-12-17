@@ -4,12 +4,18 @@
          <li class="nav-item">
            <li class='nav-item'><%= link_to 'Home', root_path, class: 'nav-link' %></li>
          </li>
-         <% if !(@user.nil?) %>
-         <li class='nav-item'><h1><%= @user.username %></h1>
+         <% if logged_in? %>
+         <li class='nav-item'><h1><%= current_user.username %></h1>
+         </li>
+         <li class="nav-item">
+           <li class='nav-item'><%= link_to 'Sign Out', signout_path, :method => :delete, class: 'nav-link' %></li>
          </li>
          <% else %>
          <li class="nav-item">
-           <li class='nav-item'><%=  link_to 'Sign In', new_user_session_path, class: 'nav-link' %></li>
+           <li class='nav-item'><%=  link_to 'Sign In',signin_path, class: 'nav-link' %></li>
+         </li>
+          <li class="nav-item">
+           <li class='nav-item'><%=  link_to 'Sign Up', signup_path, class: 'nav-link' %></li>
          </li>
          <% end %>
        </ul>
