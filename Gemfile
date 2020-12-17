@@ -38,6 +38,8 @@ group :development do
   gem 'web-console'
   gem 'listen'
   gem 'better_errors', '~> 2.9', '>= 2.9.1'
+  #Retrieve the binding of a method's caller. Can also retrieve bindings even further up the stack.
+  gem 'binding_of_caller', '~> 0.8.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen'
