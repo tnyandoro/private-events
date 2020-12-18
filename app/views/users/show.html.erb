@@ -1,1 +1,5 @@
 <h1><%= @user.username %></h1>
+
+<% @user.organize_events.each do |event| %>
+<%= event.title %>
+<% end %>

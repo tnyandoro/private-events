@@ -1,0 +1,9 @@
+<%= form_with model: @events do |f| %>
+  <%= f.label :title, "Title" %>
+  <%= f.text_field :title, class: 'form-control' %>
+  <%= f.label :body, "Body" %>
+  <%= f.text_field :body, class: 'form-control' %>
+  <%= f.label :date, "Date" %>
+  <%= f.date_field :date, class: 'form-control' %>
+  <%= f.submit "Add", class: "btn btn-primary" %>
+<% end %>
