@@ -1,25 +1,32 @@
-class SessionsController < ApplicationController
-
-  def new
-  end
-
-  def create
-    @user = User.new(user_params)
-    if @user.valid?
-      @user.save
-      flash.alert = "Welcome, #{@user.username}"
-      session[:user_id] = @user.id
-    else
-      flash.alert = "Please enter a unique username (Usernames are not case-sensitive)"
-      render 'users/new'
-    end
-  end
-
-  def destroy
-    session[:user_id] = nil
-    session.clear
-    # redirect_to root_path, flash: 'Logged Out!'
-    flash.alert = 'Logged out!'
-    render 'users/new'
-  end
-end
+# class SessionsController < ApplicationController
+#
+#   def new
+#   end
+#
+#   def create
+#     @user = User.new(user_params)
+#     puts "@user is #{@user}. Name is #{@user.username}"
+#     if @user.valid?
+#      @user.save
+#      flash.alert = "User #{@user.username} has been created!"
+#     else
+#       @user = User.find_by(username: @user.username)
+#       flash.alert = "Welcome Back, #{@user.username}!"
+#     end
+#     session[:user_id] = @user.id
+#     session[:username] = @user.username
+#     redirect_to root_path
+#  end
+#
+#   def destroy
+#     session[:user_id] = nil
+#     flash.alert = 'Logged out!'
+#     redirect_to root_path
+#   end
+#
+# private
+#   def user_params
+#     params.permit(:username)
+#   end
+#
+# end

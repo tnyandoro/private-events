@@ -9,4 +9,12 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   helper_method :current_user
+
+  def require_sign_in
+    if @user.nil?
+      flash.alert = 'Please log in'
+      redirect_to new_user_path
+    end
+  end
+
 end
