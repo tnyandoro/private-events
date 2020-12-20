@@ -1,4 +1,4 @@
-<%= form_with model: @events do |f| %>
+<%= form_with url: events_path, model: @events do |f| %>
   <%= f.label :title, "Title" %>
   <%= f.text_field :title, class: 'form-control' %>
   <%= f.label :body, "Body" %>

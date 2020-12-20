@@ -5,6 +5,6 @@ Rails.application.routes.draw do
     get 'signin' => 'users#new', as: 'signin'
     get 'signout' => 'users#destroy', as: 'signout'
 
-    root 'users#show', {id:1}
+    root 'events#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

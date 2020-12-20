@@ -1,0 +1,15 @@
+<h1>Events</h1>
+
+<div class="container d-flex m-2 ">
+  <% @events.each do |event| %>
+    <div class="col-3">
+    <div class="card">
+      <h4 class = "card-title"><%= event.title %></h4>
+      <div class="card-body">
+      <p><%= event.body %></p>
+      <p><%= event.date %></p>
+      </div>
+    </div>
+    </div>
+  <% end %>
+</div>
