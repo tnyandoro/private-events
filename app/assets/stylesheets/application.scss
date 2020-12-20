@@ -13,8 +13,17 @@
  *= require_tree .
  *= require_self
  */
-
 @import "bootstrap/scss/bootstrap";
+
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: grey;
+  text-decoration: none;
+}
 
 .jumbotron {
   padding: 1%;
@@ -22,9 +31,21 @@
 }
 
 .flash-msg {
- padding: 1%;
+  padding: 1%;
 }
 
 header {
   margin-bottom: 1%;
+}
+
+.current-user {
+
+}
+
+
+.event-index-title{
+  align-items: center;
+  h1 {
+    padding: 2%;
+  }
 }

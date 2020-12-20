@@ -1,15 +1,27 @@
-<h1>Events</h1>
+<div class="event-index-title d-flex">
+  <h1>Events</h1>
+  <% if logged_in? %>
+    <%= link_to 'Create Event', new_event_path %>
+  <% end %>
+</div>
 
-<div class="container d-flex m-2 ">
+<div class="container">
+  <div class="row">
   <% @events.each do |event| %>
-    <div class="col-3">
-    <div class="card">
-      <h4 class = "card-title"><%= event.title %></h4>
-      <div class="card-body">
-      <p><%= event.body %></p>
-      <p><%= event.date %></p>
+    <div class="card col-3 m-2 shadow-sm rounded">
+      <h4>
+        <%= link_to event.title, event, class: 'card-title' %>
+      </h4>
+      <div class="card-text">
+        <p>Organized by: <%= (User.find(event.organizer_id)).username %></p>
+        <p>Date: <%= event.date.to_date.to_formatted_s(:long_ordinal) %></p>
       </div>
-    </div>
+      <% if EventAttendee.where(attend_event_id: event.id, attendee_id: current_user.id).empty? %>
+        <%= link_to 'Attend Event', attend_path(:event => event), class: 'btn btn-primary' %>
+      <% else %>
+        <a href="#" class="btn btn-success">Attending</a>
+      <% end %>
     </div>
   <% end %>
+  </div>
 </div>
