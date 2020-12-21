@@ -23,8 +23,8 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @attendee_list = EventAttendee.where(attend_event_id: @event.id).map do |event_relation|
-       User.find(event_relation.attendee_id)
-     end
+      User.find(event_relation.attendee_id)
+    end
   end
 
   def attend
@@ -33,7 +33,6 @@ class EventsController < ApplicationController
     flash.alert = "You're now attending #{@event.title}!"
     redirect_to root_path
   end
-
 
   private
 

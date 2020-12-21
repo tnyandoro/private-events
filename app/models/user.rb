@@ -6,6 +6,6 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
 
   def event_attend?(user_id, event_id)
-     !(EventAttendee.where(attend_event_id: event_id, attendee_id: user_id).empty?)
+    !EventAttendee.where(attend_event_id: event_id, attendee_id: user_id).empty?
   end
 end
