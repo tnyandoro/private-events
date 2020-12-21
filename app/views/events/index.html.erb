@@ -4,28 +4,63 @@
     <%= link_to 'Create Event', new_event_path %>
   <% end %>
 </div>
-
-<div class="container">
-  <div class="row">
-  <% @events.each do |event| %>
-    <div class="card col-3 m-2 shadow-sm rounded">
-      <h4>
-        <%= link_to event.title, event, class: 'card-title' %>
-      </h4>
-      <div class="card-text">
-        <p>Organized by: <%= (User.find(event.organizer_id)).username %></p>
-        <p>Date: <%= event.date.to_date.to_formatted_s(:long_ordinal) %></p>
-      </div>
-        <% if logged_in? %>
-          <% if EventAttendee.where(attend_event_id: event.id, attendee_id: current_user.id).empty? %>
-            <%= link_to 'Attend Event', attend_path(id: event), class: 'btn btn-primary' %>
+<div class="events">
+  <div class="card-holder">
+    <% @future_events.each do |event| %>
+      <div class="card shadow rounded">
+        <div class="card-body">
+          <h4>
+            <%= link_to event.title, event, class: 'card-title' %>
+          </h4>
+          <hr class="hr-light">
+          <div class="card-text">
+            <p>Organized by:
+              <%= (User.find(event.organizer_id)).username %></p>
+            <p>Date:
+              <%= event.date.to_date.to_formatted_s(:long_ordinal) %></p>
+          </div>
+          <% if logged_in? %>
+            <% if EventAttendee.where(attend_event_id: event.id, attendee_id: current_user.id).empty? %>
+              <%= link_to 'Attend Event', attend_path(id: event), class: 'btn btn-primary' %>
+            <% else %>
+              <a href="#" class="btn btn-success">Attending</a>
+            <% end %>
           <% else %>
-            <a href="#" class="btn btn-success">Attending</a>
+            <%= link_to 'Sign in to Attend Event', signin_path, class: 'btn btn-warning' %>
           <% end %>
-        <% else %>
-          <%= link_to 'Sign in to Attend Event', signin_path, class: 'btn btn-warning' %>
-        <% end %>
-    </div>
-  <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
+</div>
+<h1>
+  Past Events
+</h1>
+<div class="events">
+  <div class="card-holder">
+    <% @past_events.each do |event| %>
+      <div class="card shadow rounded">
+        <div class="card-body">
+          <h4>
+            <%= link_to event.title, event, class: 'card-title' %>
+          </h4>
+          <hr class="hr-light">
+          <div class="card-text">
+            <p>Organized by:
+              <%= (User.find(event.organizer_id)).username %></p>
+            <p>Date:
+              <%= event.date.to_date.to_formatted_s(:long_ordinal) %></p>
+          </div>
+          <% if logged_in? %>
+            <% if EventAttendee.where(attend_event_id: event.id, attendee_id: current_user.id).empty? %>
+              <a href="#" class="btn btn-warning">Did not attend</a>
+            <% else %>
+              <a href="#" class="btn btn-success">Attended</a>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 </div>

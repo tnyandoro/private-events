@@ -25,6 +25,14 @@ a:hover {
   text-decoration: none;
 }
 
+body {
+
+}
+
+hr {
+  border-top: 1px solid #343a40;
+}
+
 .jumbotron {
   padding: 1%;
   margin: 0;
@@ -40,12 +48,4 @@ header {
 
 .current-user {
 
-}
-
-
-.event-index-title{
-  align-items: center;
-  h1 {
-    padding: 2%;
-  }
 }
