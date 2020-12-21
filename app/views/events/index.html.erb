@@ -16,11 +16,15 @@
         <p>Organized by: <%= (User.find(event.organizer_id)).username %></p>
         <p>Date: <%= event.date.to_date.to_formatted_s(:long_ordinal) %></p>
       </div>
-      <% if EventAttendee.where(attend_event_id: event.id, attendee_id: current_user.id).empty? %>
-        <%= link_to 'Attend Event', attend_path(:event => event), class: 'btn btn-primary' %>
-      <% else %>
-        <a href="#" class="btn btn-success">Attending</a>
-      <% end %>
+        <% if logged_in? %>
+          <% if EventAttendee.where(attend_event_id: event.id, attendee_id: current_user.id).empty? %>
+            <%= link_to 'Attend Event', attend_path(id: event), class: 'btn btn-primary' %>
+          <% else %>
+            <a href="#" class="btn btn-success">Attending</a>
+          <% end %>
+        <% else %>
+          <%= link_to 'Sign in to Attend Event', signin_path, class: 'btn btn-warning' %>
+        <% end %>
     </div>
   <% end %>
   </div>

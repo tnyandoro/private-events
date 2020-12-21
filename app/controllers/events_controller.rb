@@ -23,9 +23,10 @@ class EventsController < ApplicationController
   end
 
   def attend
-    EventAttendee.create(attend_event: event, attendee: current_user)
-    flash.alert = "You're now attending #{event.title}!"
-    redirect_to event
+    @event = Event.find(params[:id])
+    EventAttendee.create(attend_event: @event, attendee: current_user)
+    flash.alert = "You're now attending #{@event.title}!"
+    redirect_to root_path
   end
 
   private
