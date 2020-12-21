@@ -31,6 +31,7 @@ To get this project up and running locally, you must have installed, ruby, rails
 3. Clone this repository: git clone https://github.com/tnyandoro/private-events
 4. Run ```cd private-events```.
 5. Run ```bundle install``` to get the necesary gems.
+7. Run `yarn add bootstrap jquery popper.js` to install Bootstrap and its dependencies
 6. Run `rails db:migrate`.
 
 ## Use
