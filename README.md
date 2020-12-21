@@ -4,7 +4,7 @@ This is a mini-project that allows you to
 
 - Organize events
 - Attend events
-- See the list of atteendees for an event
+- See the list of attendees for an event
 - See the events organized by the user
 - See the events, a user is attending
 
