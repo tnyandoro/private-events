@@ -1,4 +1,8 @@
-<%= form_with url: users_path, model:@users, local:true do |f| %>
+<div class="container ">
+  <%= form_with url: users_path, model:@users, local:true do |f| %>
+  <%= f.label :username, "Username" %>
   <%= f.text_field :username %>
-  <%= f.submit 'submit', :class => 'btn btn-primary' %>
+  <br>
+  <%= f.submit 'Sign In', :class => 'btn btn-dark' %>
+</div>
 <% end %>

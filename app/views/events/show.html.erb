@@ -1,16 +1,16 @@
-<h1 class="card-title"><%= @event.title %></h2>
-<h6>Created by
-  <%= (User.find(@event.organizer_id)).username %></h6>
+<div class="container">
+<h2><%= @event.title %></h2>
+<h6>Organized by <%= link_to (User.find(@event.organizer_id)).username, (User.find(@event.organizer_id))%> </h6>
 <p><%= @event.body %></p>
 
 <% if EventAttendee.where(attend_event_id: @event.id).empty? %>
-  <h2>
-    No one is attending is this event right now
-  </h2>
+  <h5>
+    No Attendees!
+  </h5>
 <% else %>
-  <h6>
+  <h5>
     List of Attendees
-  </h6>
+  </h5>
   <ul>
     <% EventAttendee.where(attend_event_id: @event.id).each do |event_relation| %>
      <% user = User.find(event_relation.attendee_id) %>
@@ -18,3 +18,4 @@
     <% end %>
   </ul>
 <% end %>
+</div>

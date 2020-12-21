@@ -1,14 +1,15 @@
-<h1><%= @user.username %>'s Profile Page</h1>
+<div class="container">
+<h2><%= @user.username %>'s Profile Page</h2>
 
-<h2>
-  Events organized by User</h2>
+<% unless @user.organize_events.empty? %>
+<h5>Events organized by <%= @user.username %></h5>
 <div class="container">
   <div class="row">
     <% @user.organize_events.each do |event| %>
       <div class="card col-3 m-2 shadow-sm rounded">
-        <h4>
+        <h5>
           <%= link_to event.title, event, class: 'card-title' %>
-        </h4>
+        </h5>
         <div class="card-body">
           <p><%= event.body %></p>
           <p><%= event.date %></p>
@@ -17,23 +18,21 @@
     <% end %>
   </div>
 </div>
+<% end %>
 
-<% if EventAttendee.where(attendee_id:@user.id).empty? %>
-  <h2>
-    User is not attending any events
-  </h2>
-<% else %>
-  <h2>
-    Events User is attending
-  </h2>
+
+<% unless EventAttendee.where(attendee_id:@user.id).empty? %>
+  <h5>
+    Events <%= @user.username %> is attending/has attended
+  </h5>
   <div class="container">
     <div class="row">
       <% EventAttendee.where(attendee_id:@user.id).each do |event_relation| %>
         <% event = Event.find(event_relation.attend_event_id) %>
           <div class="card col-3 m-2 shadow-sm rounded">
-            <h4>
+            <h5>
               <%= link_to event.title, event, class: 'card-title' %>
-            </h4>
+            </h5>
             <div class="card-body">
               <p><%= event.body %></p>
               <p><%= event.date %></p>
@@ -43,3 +42,4 @@
       </div>
     </div>
   <% end %>
+</div>

@@ -1,9 +1,13 @@
-<%= form_with url: events_path, model: @events do |f| %>
+<div class="container">
+  <h2>New Event</h2>
+  <%= form_with url: events_path, model: @events do |f| %>
   <%= f.label :title, "Title" %>
   <%= f.text_field :title, class: 'form-control' %>
   <%= f.label :body, "Body" %>
-  <%= f.text_field :body, class: 'form-control' %>
+  <%= f.text_area :body, class: 'form-control' %>
   <%= f.label :date, "Date" %>
   <%= f.date_field :date, class: 'form-control' %>
-  <%= f.submit "Add", class: "btn btn-primary" %>
+  <br>
+  <%= f.submit "Organize", class: "btn btn-dark" %>
 <% end %>
+</div>
