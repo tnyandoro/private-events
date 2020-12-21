@@ -1,21 +1,13 @@
 <div class="container">
 <h2><%= @event.title %></h2>
-<h6>Organized by <%= link_to (User.find(@event.organizer_id)).username, (User.find(@event.organizer_id))%> </h6>
+<h6>Organized by <%= link_to organizer(@event).username, organizer(@event)%> </h6>
 <p><%= @event.body %></p>
-
-<% if EventAttendee.where(attend_event_id: @event.id).empty? %>
-  <h5>
-    No Attendees!
-  </h5>
-<% else %>
   <h5>
     List of Attendees
   </h5>
   <ul>
-    <% EventAttendee.where(attend_event_id: @event.id).each do |event_relation| %>
-     <% user = User.find(event_relation.attendee_id) %>
+    <% @attendee_list.each do |user| %>
       <li><%= link_to user.username, user %> </li>
     <% end %>
   </ul>
-<% end %>
 </div>

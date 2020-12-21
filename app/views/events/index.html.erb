@@ -15,19 +15,12 @@
           <hr class="hr-light">
           <div class="card-text">
             <p>Organized by:
-              <%= (User.find(event.organizer_id)).username %></p>
+              <%= organizer(event).username %></p>
             <p>Date:
               <%= event.date.to_date.to_formatted_s(:long_ordinal) %></p>
           </div>
-          <% if logged_in? %>
-            <% if EventAttendee.where(attend_event_id: event.id, attendee_id: current_user.id).empty? %>
-              <%= link_to 'Attend Event', attend_path(id: event), class: 'btn btn-primary' %>
-            <% else %>
-              <a href="#" class="btn btn-success">Attending</a>
-            <% end %>
-          <% else %>
-            <%= link_to 'Sign in to Attend Event', signin_path, class: 'btn btn-warning' %>
-          <% end %>
+         <%  btn_atr = upcoming_event_button(event.id, current_user) %>
+         <%= link_to btn_atr[0], btn_atr[1], class: class_string(btn_atr[2], true) %>
         </div>
       </div>
     <% end %>
@@ -47,20 +40,14 @@
           <hr class="hr-light">
           <div class="card-text">
             <p>Organized by:
-              <%= (User.find(event.organizer_id)).username %></p>
+              <%= organizer(event).username %></p>
             <p>Date:
               <%= event.date.to_date.to_formatted_s(:long_ordinal) %></p>
           </div>
-          <% if logged_in? %>
-            <% if EventAttendee.where(attend_event_id: event.id, attendee_id: current_user.id).empty? %>
-              <a href="#" class="btn btn-warning">Did not attend</a>
-            <% else %>
-              <a href="#" class="btn btn-success">Attended</a>
-            <% end %>
-          <% end %>
+          <%  btn_atr = past_event_button(event.id, current_user) %>
+          <%= link_to btn_atr[0], btn_atr[1], class: class_string(btn_atr[2], true) %>
         </div>
       </div>
     <% end %>
   </div>
-</div>
 </div>

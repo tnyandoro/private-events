@@ -25,6 +25,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @past_created_events = current_user.organize_events.past
+    @future_created_events = current_user.organize_events.future
+
+    @past_attended_event_list = EventAttendee.where(attendee_id:@user.id).filter_map do |event_relation|
+       Event.past.find_by_id(event_relation.attend_event_id)
+     end
+    @future_attended_event_list = EventAttendee.where(attendee_id:@user.id).filter_map do |event_relation|
+        Event.future.find_by_id(event_relation.attend_event_id)
+      end
+
   end
 
   private
