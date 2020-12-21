@@ -4,6 +4,6 @@ class Event < ApplicationRecord
   has_many :event_attendees, foreign_key: 'event_attendee_id'
   has_many :attendees, class_name: 'User', through: :event_attendees, source: :attendee
 
-  scope :past, -> {where("date < ?", Date.today)}
-  scope :future, -> {where("date > ?", Date.today)}
+  scope :past, -> { where('date < ?', Date.today) }
+  scope :future, -> { where('date > ?', Date.today) }
 end

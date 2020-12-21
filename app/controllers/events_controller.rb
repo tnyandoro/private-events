@@ -32,9 +32,8 @@ class EventsController < ApplicationController
   end
 
   private
+
   def user_params
     params.permit(:title, :body, :date, :location)
   end
-
-
 end

@@ -21,31 +21,27 @@ h1 {
   grid-gap: 2%;
 }
 
-
 .card {
-border: 2px;
+  border: 2px;
 }
 
 @media (max-width: 400px) {
   .card-holder {
     grid-template-columns: 1fr;
   }
-
 }
+
 @media (min-width: 400px) {
   .card-holder {
     grid-template-columns: 1fr 1fr;
   }
-
 }
-
 
 @media (min-width: 600px) {
   .card-holder {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
-
 
 @media (min-width: 769px) {
   .card-holder {

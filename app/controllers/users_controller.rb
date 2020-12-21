@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def new
     @user = User.new
   end
@@ -7,8 +6,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.valid?
-     @user.save
-     flash.alert = "User #{@user.username} has been created!"
+      @user.save
+      flash.alert = "User #{@user.username} has been created!"
     else
       @user = User.find_by(username: @user.username)
       flash.alert = "Welcome Back, #{@user.username}!"
@@ -29,8 +28,8 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.permit(:username)
   end
-
 end

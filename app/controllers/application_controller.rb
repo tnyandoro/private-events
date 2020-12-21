@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
-
   def logged_in?
-    !(session[:user_id].nil?)
+    !session[:user_id].nil?
   end
   helper_method :logged_in?
 
@@ -11,10 +10,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def require_sign_in
-    if @user.nil?
-      flash.alert = 'Please log in'
-      redirect_to new_user_path
-    end
-  end
+    return unless @user.nil?
 
+    flash.alert = 'Please log in'
+    redirect_to new_user_path
+  end
 end

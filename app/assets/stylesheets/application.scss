@@ -15,7 +15,6 @@
  */
 @import "bootstrap/scss/bootstrap";
 
-
 a {
   color: black;
 }
@@ -23,10 +22,6 @@ a {
 a:hover {
   color: grey;
   text-decoration: none;
-}
-
-body {
-
 }
 
 hr {
@@ -44,8 +39,4 @@ hr {
 
 header {
   margin-bottom: 1%;
-}
-
-.current-user {
-
 }
