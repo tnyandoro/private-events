@@ -1,0 +1,50 @@
+// Place all the styles related to the Events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.event-index-title {
+  align-items: center;
+}
+
+h1 {
+  padding: 1% 2%;
+}
+
+.events {
+  padding: 1% 2%;
+}
+
+// Cards
+
+.card-holder {
+  display: grid;
+  grid-gap: 2%;
+}
+
+.card {
+  border: 2px;
+}
+
+@media (max-width: 400px) {
+  .card-holder {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 400px) {
+  .card-holder {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 600px) {
+  .card-holder {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 769px) {
+  .card-holder {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}

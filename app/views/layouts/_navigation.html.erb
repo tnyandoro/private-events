@@ -1,0 +1,12 @@
+<nav class="navbar navbar-dark navbar-expand-sm bg-dark">
+  <%= link_to 'PrivateEvents', root_path, class: 'navbar-brand' %>
+  <ul class="navbar-nav ml-auto">
+    <% if logged_in? %>
+      <li class='nav-item'> <%= link_to current_user.username, current_user, class: 'nav-link' %></li>
+
+      <li class='nav-item'><%= link_to 'Sign Out', signout_path, :method => :delete, class: 'nav-link' %></li>
+    <% else %>
+      <li class='nav-item'><%= link_to 'Sign In',signin_path, class: 'nav-link' %></li>
+    <% end %>
+  </ul>
+</nav>

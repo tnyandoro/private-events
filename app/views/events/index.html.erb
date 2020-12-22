@@ -1,0 +1,53 @@
+<div class="event-index-title d-flex">
+  <h1>Events</h1>
+  <% if logged_in? %>
+    <%= link_to 'Create Event', new_event_path %>
+  <% end %>
+</div>
+<div class="events">
+  <div class="card-holder">
+    <% @future_events.each do |event| %>
+      <div class="card shadow rounded">
+        <div class="card-body">
+          <h4>
+            <%= link_to event.title, event, class: 'card-title' %>
+          </h4>
+          <hr class="hr-light">
+          <div class="card-text">
+            <p>Organized by:
+              <%= organizer(event).username %></p>
+            <p>Date:
+              <%= event.date.to_date.to_formatted_s(:long_ordinal) %></p>
+          </div>
+         <%  btn_atr = upcoming_event_button(event.id, current_user) %>
+         <%= link_to btn_atr[0], btn_atr[1], class: class_string(btn_atr[2], true) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<h1>
+  Past Events
+</h1>
+<div class="events">
+  <div class="card-holder">
+    <% @past_events.each do |event| %>
+      <div class="card shadow rounded">
+        <div class="card-body">
+          <h4>
+            <%= link_to event.title, event, class: 'card-title' %>
+          </h4>
+          <hr class="hr-light">
+          <div class="card-text">
+            <p>Organized by:
+              <%= organizer(event).username %></p>
+            <p>Date:
+              <%= event.date.to_date.to_formatted_s(:long_ordinal) %></p>
+          </div>
+          <%  btn_atr = past_event_button(event.id, current_user) %>
+          <%= link_to btn_atr[0], btn_atr[1], class: class_string(btn_atr[2], true) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

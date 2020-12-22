@@ -1,0 +1,91 @@
+<div class="container">
+  <h2><%= @user.username %>'s Profile Page</h2>
+
+  <h5>Events organized by <%= @user.username %></h5>
+  <div class="container">
+    <% unless @future_created_events.empty? %>
+      <h6> Upcoming events</h6>
+      <div class="row">
+        <% @future_created_events.each do |event| %>
+          <div class="card col-2 m-2 shadow-sm rounded">
+            <div class="card-body">
+              <h4>
+                <%= link_to event.title, event, class: 'card-title' %>
+              </h4>
+              <hr class="hr-light">
+              <div class="card-text">
+                <p>Date:
+                  <%= event.date.to_date.to_formatted_s(:long_ordinal) %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    <% unless @past_created_events.empty? %>
+    <h6> Past events </h6>
+    <div class="row">
+      <% @past_created_events.each do |event| %>
+        <div class="card col-2 m-2 shadow-sm rounded">
+          <div class="card-body">
+            <h4>
+              <%= link_to event.title, event, class: 'card-title' %>
+            </h4>
+            <hr class="hr-light">
+            <div class="card-text">
+              <p>Date:
+                <%= event.date.to_date.to_formatted_s(:long_ordinal) %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <% end %>
+
+  </div>
+
+
+    <h5>
+      Events <%= @user.username %> is attending/has attended
+    </h5>
+    <div class="container">
+      <h6> Upcoming events </h6>
+      <% unless @future_attended_event_list.empty? %>
+      <div class="row">
+        <% @future_attended_event_list.each do |event| %>
+        <div class="card col-2 m-2 shadow-sm rounded">
+          <div class="card-body">
+            <h4>
+              <%= link_to event.title, event, class: 'card-title' %>
+            </h4>
+            <hr class="hr-light">
+            <div class="card-text">
+              <p>Date:
+                <%= event.date.to_date.to_formatted_s(:long_ordinal) %></p>
+            </div>
+          </div>
+        </div>
+          <% end %>
+        </div>
+        <% end %>
+        <% unless @past_attended_event_list.empty? %>
+        <h6> Past events </h6>
+        <div class="row">
+          <% @past_attended_event_list.each do |event| %>
+          <div class="card col-2 m-2 shadow-sm rounded">
+            <div class="card-body">
+              <h4>
+                <%= link_to event.title, event, class: 'card-title' %>
+              </h4>
+              <hr class="hr-light">
+              <div class="card-text">
+                <p>Date:
+                  <%= event.date.to_date.to_formatted_s(:long_ordinal) %></p>
+              </div>
+            </div>
+          </div>
+            <% end %>
+          </div>
+       <% end %>
+      </div>
+</div>
