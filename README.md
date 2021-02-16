@@ -52,7 +52,7 @@ To get this project up and running locally, you must have installed, ruby, rails
 👤 **Tendai Nyandoro**
 
 - GitHub: [@Tendai Nyandoro](https://github.com/tnyandoro)
-- Twitter: [@tendai28](https://twitter.com/tendai28)
+- Twitter: [@tendainyandoro](https://twitter.com/tendainyandoro)
 - LinkedIn: [Tendai Nyandoro](https://www.linkedin.com/in/tendai-nyandoro/)
 
 ## Acknowledgements
